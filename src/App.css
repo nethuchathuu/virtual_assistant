@@ -1,0 +1,39 @@
+.main{
+    width: 100px;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+span{
+    background: linear-gradient(to right,rgb(34, 221, 231),rgb(140, 171, 212));
+    position: absolute;
+    bottom: 200px; 
+    left: 48.5%;
+    transform: translateX(-50%);
+    font-size: 2vmax;
+    background-clip: text;
+    color: transparent;
+}
+
+button{
+    position: absolute;
+    bottom: 157px; 
+    left: 48.5%;
+    transform: translateX(-50%); 
+    width: 180px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(79, 224, 234);
+    box-shadow: 2px 2px 50px rgb(79, 224, 234);
+}
