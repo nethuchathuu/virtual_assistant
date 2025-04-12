@@ -17,9 +17,21 @@ import {
     temperature: 1,
     topP: 0.95,
     topK: 40,
-    maxOutputTokens: 8192,
+    maxOutputTokens: 150, // ✨ enough for a short and useful answer
     responseMimeType: "text/plain",
   };
+
+  const chatSession = model.startChat({
+    generationConfig,
+    history: [
+      {
+        role: "user",
+        parts: [{ text: "You are a helpful virtual assistant named Talko." }]
+      }
+    ]
+  });
+  
+  
   
   async function run(prompt) {
     const chatSession = model.startChat({

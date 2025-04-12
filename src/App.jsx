@@ -2,18 +2,52 @@ import React, { useContext } from 'react';
 import "./App.css";
 import { CiMicrophoneOn } from "react-icons/ci";
 import { DataContext } from './context/userContext';
+import speakimg from "./images/200w.gif";
+import aigif from "./images/aiv-unscreen.gif"
+
 
 function App() {
-  let { recognition } = useContext(DataContext);
+  let { recognition, speaking, setSpeaking, prompt, setPrompt, response, setResponse, stopSpeaking } = useContext(DataContext);
+
+  console.log(speakimg);
 
   return (
     <div className="main">
       <span>I am Talko, Your Advanced Virtual Assistant</span>
-      <button onClick={() => {
+      
+      {
+  !speaking ? (
+    <button onClick={() => {
+      if (recognition) {
+        setPrompt("listening...");
+        setSpeaking(true);
+        setResponse(false);
         recognition.start();
-      }}>
-        Click here <CiMicrophoneOn />
+      } else {
+        alert("Voice recognition not supported");
+      }
+    }}>
+      Click here <CiMicrophoneOn />
+    </button>  
+  ) : (
+    <div className='response'>
+      {!response ? (
+        <img src={speakimg} alt="" id="speak" />
+      ) : (
+        <img src={aigif} alt="" id="aigif" />
+      )}
+      <p>{prompt}</p>
+
+      {/* ✨ Add this Stop Button */}
+      <button onClick={stopSpeaking} className="stop-btn">
+        Stop Response
       </button>
+    </div>
+  )
+}
+
+      
+      
     </div>
   );
 }
